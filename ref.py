@@ -38,14 +38,18 @@ if __name__ == "__main__":
                 print(line.replace('$LHOST', tun0_ip).strip())
         else:
             print("Please connect to VPN to get the tun0 IP address.")
+            for line in lines:
+                print(line.strip())
     else:
         keyword = sys.argv[1]
         lines_after = int(sys.argv[2]) if len(sys.argv) > 2 else 0
         tun0_ip = get_tun0_ip()
+        lines = read_file('/pt/reference/basics')
         if tun0_ip:
-            lines = read_file('/pt/reference/basics')
             for line in lines:
                 line = line.replace('$LHOST', tun0_ip)
             search_keyword(lines, keyword, lines_after)
         else:
             print("Please connect to VPN to get the tun0 IP address.")
+            for line in lines:
+                print(line.strip())
