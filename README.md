@@ -16,10 +16,7 @@ basics file located at /pt/reference/basics.
 
 
 Install Dependencies:
-pip install netifaces
-
-Set Up Alias: Add the following line to your .bashrc or .zshrc file to create a shortcut for running the script:
-alias ref='/opt/ref/ref'
+```pip install netifaces```
 
 Usage
 Basic Usage (Print Entire Cheat Sheet with IP Replacement)
