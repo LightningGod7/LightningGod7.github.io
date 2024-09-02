@@ -51,5 +51,4 @@ if __name__ == "__main__":
             search_keyword(lines, keyword, lines_after)
         else:
             print("Please connect to VPN to get the tun0 IP address.")
-            for line in lines:
-                print(line.strip())
+            search_keyword(lines, keyword, lines_after)
