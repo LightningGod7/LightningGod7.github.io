@@ -18,7 +18,7 @@ alias sserv='impacket-smbserver kali . -smb2support'
 ```
 I use aliases to shorten most commonly used commands during the exam. Aliases are placed in ~/.bashrc or ~/.zshrc (for kali) or something else depending on the shell you are using. 
 
-##Set up
+## Set up
 ```
 #Append the above into ~/.zshrc
 
