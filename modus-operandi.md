@@ -5,7 +5,7 @@ The exam is a 24 hour long process and as humans, we are bound to get tired and 
 
 My MO involves techniques and habits to streamline all these processes. From my own experience in my exam, this saved me a ton of time and allowed me to utilize my brain juice on the more important things.
 
-#Aliases (materials/alias.txt)
+# Aliases (materials/alias.txt)
 
 ```bash
 alias update='sudo -- sh -c "apt update && apt upgrade"'
@@ -26,7 +26,7 @@ sserv - smb server in current directory
 
 p.s. do remember to change the paths for files like 'breakout' if you do use my aliases.
 
-# Services I leave running on kali
+# Services to run
 
 ## Apache Web-server
 I have an apache server systemctl-enabled. The root directory is pointed to `/serve` on my kali and is hosted on port 8000. `/serve` contains a bunch of binaries, scripts I commonly transfer to my targets upon gaining access. E.g. linpeas, pspy64, powerup, powerview etc.
@@ -92,16 +92,16 @@ sudo ip route add 172.16.124.0/24 dev ligolo
 .\agent.exe -connect 192.168.45.204:443 -ignore-cert
 ```
 
-## Diodon (https://github.com/diodon-dev/diodon)
+## [Diodon] (https://github.com/diodon-dev/diodon)
 Its a super helpful clipboard. Youre gonna want to have this in between copying and pasting hundreds of stuff during your exam. 
 Personally, I binded the hot key to super(win key) + v to have it same as windows. 
 
 ## NetExec
 This is a kali swiss army knife on steroids. You can enumerate, exploit on this AIO tool. Also, in case you are worried, I have verified that this is not an auto-exploit tool and is allowed during the exam. I used this extensively during my own exam. All the commands are in my cheat sheet.
-###Installation
+### Installation
 `sudo apt install netexec`
 
-# Handy Cheatsheet printer (materials/ref)
+# [Handy Cheatsheet printer] (materials/ref)
 Yes you can just cat and grep your cheatsheets but why not replace $LHOST dynamically while you're at it?
 Chmod this script as an executable and added it to PATH so that you can call it from anywhere.
 Fyi, this was most most ran command during my exam.
@@ -140,6 +140,6 @@ Generating your own ps64 revshell
 `rs -t ps -i eth1 -p 80`
 
 
-# Quick transfer to windows target (materials/makepwn.py)
+# [Quick transfer to windows target] (materials/makepwn.py)
 Python script to get your tun0 or eth0 ip, and then plug that into a ps1 script.
 Run a command on your windows target upon gaining access to trigger the ps1 script and download all your crucial files to C:\Windows\Temp
