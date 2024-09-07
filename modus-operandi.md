@@ -16,7 +16,18 @@ alias rev="head -n 3 /pt/reference/breakout ; nc -nvlp"
 alias serv='python3 -m http.server'
 alias sserv='impacket-smbserver kali . -smb2support'
 ```
-I use aliases to shorten most commonly used commands during the exam. Aliases are placed in ~/.bashrc or ~/.zshrc. Once you have added your aliases, remember to run `source <your rc file>`
+I use aliases to shorten most commonly used commands during the exam. Aliases are placed in ~/.bashrc or ~/.zshrc (for kali) or something else depending on the shell you are using. 
+
+##Set up
+```
+#Append the above into ~/.zshrc
+
+#Trigger changes
+source ~/.zshrc
+
+#Verify new aliases
+alias
+```
 
 me - prints out the tun0 ip address
 
