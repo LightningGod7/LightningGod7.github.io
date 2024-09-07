@@ -17,12 +17,20 @@ alias serv='python3 -m http.server'
 alias sserv='impacket-smbserver kali . -smb2support'
 ```
 I use aliases to shorten most commonly used commands during the exam. Aliases are placed in ~/.bashrc or ~/.zshrc. Once you have added your aliases, remember to run `source <your rc file>`
+
 me - prints out the tun0 ip address
+
 bo - prints linux shell breakout and upgrade commands
-rev - quickly spawns a reverse listener and prints shell upgrade commands to copy and paste when you get your linux reverse shell connection
+
+rev - quickly spawns a reverse listener and prints shell upgrade commands to copy and paste when you get your 
+linux reverse shell connection
+
 rrev - quickly spawns a reverse listener with rlwrap for windows reverse shells
+
 serv - python http server in current directory (remember to specify your port at the back)
+
 sserv - smb server in current directory
+
 
 p.s. do remember to change the paths for files like 'breakout' if you do use my aliases.
 
