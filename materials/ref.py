@@ -2,6 +2,9 @@
 import sys
 import netifaces as ni
 
+
+CHEATSHEET_PATH = '/pt/references/cheatsheet'
+
 def get_tun0_ip():
     try:
         TUN0_IP = ni.ifaddresses('tun0')[ni.AF_INET][0]['addr']
@@ -31,7 +34,7 @@ def search_keyword(lines, keyword, lines_after=0):
 if __name__ == "__main__":
     if len(sys.argv) == 1:
         # If no arguments provided, simply output the whole file
-        lines = read_file('/pt/reference/basics')
+        lines = read_file(CHEATSHEET_PATH)
         tun0_ip = get_tun0_ip()
         if tun0_ip:
             for line in lines:
