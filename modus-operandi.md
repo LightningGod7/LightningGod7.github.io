@@ -1,11 +1,11 @@
-#Why having an MO is important
+##Why having an MO is important
 Leading up to my own exam, I have read tons of "How I passed OSCP in 6 hours" medium writeups. Most of them give links to cheat sheets, notes and even good tips on how to strategise your exam approach. Most however, don't tell you about how you can create your own 'engagement style'.
 
 The exam is a 24 hour long process and as humans, we are bound to get tired and make mistakes, even with cheat sheets and a ton of materials. I have always thought that it is important to automate as many menial tasks as possible. This includes things like replacing "$LHOST" and "$LPORT" in your cheatsheet, running off to revshells.com to plug in your address and ports to copy your rev shell command, running cert-util commands multiple times across multiple hosts just to transfer the same files on to your targets...
 
 My MO involves techniques and habits to streamline all these processes. From my own experience in my exam, this saved me a ton of time and allowed me to utilize my brain juice on the more important things.
 
-#Aliases (materials/alias.txt)
+##Aliases (materials/alias.txt)
 
 ```bash
 alias update='sudo -- sh -c "apt update && apt upgrade"'
@@ -26,16 +26,16 @@ sserv - smb server in current directory
 
 p.s. do remember to change the paths for files like 'breakout' if you do use my aliases.
 
-#Services I leave running on kali
+##Services I leave running on kali
 
-##Apache Web-server
+###Apache Web-server
 I have an apache server systemctl-enabled. The root directory is pointed to `/serve` on my kali and is hosted on port 8000. `/serve` contains a bunch of binaries, scripts I commonly transfer to my targets upon gaining access. E.g. linpeas, pspy64, powerup, powerview etc.
 
-##Code-server
+###Code-server
 Code server is basically vs code running as a webserver. You can access this remotely, for example outside your vm on your actual host.
 I keep a code-server running for me to quickly debug or edit scripts without having to nano in on my already flooded terminal. 
 
-#Shortcut folders
+##Shortcut folders
 Do symbolic links on your vm to quickly access most used files. Some examples of what I do are as such
 
 `/pt -> /mnt/NAS/OSCP/essentials` - I store all of my OSCP materials on a NAS and mounted it onto my VM 
@@ -43,13 +43,13 @@ Do symbolic links on your vm to quickly access most used files. Some examples of
 
 `/wls -> /usr/share/wordlist` - yes im lazy to type that all out everytime on hydra or hashcat
 
-#Must have programs
+##Must have programs
 
-##Ligolo (https://github.com/nicocha30/ligolo-ng/)
+###Ligolo (https://github.com/nicocha30/ligolo-ng/)
 Ligolo is a tool used for port-forwarding and tunneling. It is not taught in the PEN-200 material but it is way easier to use as compared to the tools they do teach you.
 You will find all the below commands in my cheat sheet. (except the installation)
 
-###Installing
+####Installing
 ```bash 
 #Download Agent
 #Linux
@@ -63,7 +63,7 @@ sudo wget https://github.com/nicocha30/ligolo-ng/releases/download/v0.4.3/ligolo
 tar -xvf
 ```
 
-###Proxy
+####Proxy
 ```bash
 #create tun interface for ligolo
 sudo ip tuntap add user kali mode tun ligolo
@@ -87,47 +87,47 @@ ligolo-ng » session
 sudo ip route add 172.16.124.0/24 dev ligolo
 ```
 
-###Agent
+####Agent
 ```bash
 .\agent.exe -connect 192.168.45.204:443 -ignore-cert
 ```
 
-##Diodon (https://github.com/diodon-dev/diodon)
+###Diodon (https://github.com/diodon-dev/diodon)
 Its a super helpful clipboard. Youre gonna want to have this in between copying and pasting hundreds of stuff during your exam. 
 Personally, I binded the hot key to super(win key) + v to have it same as windows. 
 
-##NetExec
+###NetExec
 This is a kali swiss army knife on steroids. You can enumerate, exploit on this AIO tool. Also, in case you are worried, I have verified that this is not an auto-exploit tool and is allowed during the exam. I used this extensively during my own exam. All the commands are in my cheat sheet.
-###Installation
+####Installation
 `sudo apt install netexec`
 
-#Handy Cheatsheet printer (materials/ref)
+##Handy Cheatsheet printer (materials/ref)
 Yes you can just cat and grep your cheatsheets but why not replace $LHOST dynamically while you're at it?
 Chmod this script as an executable and added it to PATH so that you can call it from anywhere.
 Fyi, this was most most ran command during my exam.
 
-##Pre-requisites
+###Pre-requisites
 `pip install netifaces`
 Change CHEATSHEET_PATH variable to whereever you decided to put your cheatsheet at
 
-##Usage
+###Usage
 `ref` - print cheatsheet, plug in tun0 or eth0 ip
 `ref [keyword] [lines_after]`
 
-##Example
+###Example
 `ref "===WINDOWS PE===" 40` - print windows priv esc section
 
-#Quick Rev-shell generator
+##Quick Rev-shell generator
 Minimal cli version of revshell.com. Also dynamically gets your tun0 or eth0 address.
 Chmod this script as an executable and added it to PATH so that you can call it from anywhere.
 
-#Pre-requisites
+##Pre-requisites
 `pip install netifaces`
 
-##Usage
+###Usage
 `rs` - prints all rev shell types with default port and your tun0 or eth0 ip 
 `rs [-t <shell_type>] [-i <INTERFACE>] [-p <LPORT>]` - specify your own variables
-###Shell type values
+####Shell type values
 powershell - `ps`
 bash - `bash`
 python - `python`
@@ -135,12 +135,12 @@ perl - `perl`
 php - `php`
 nc - `nc`
 
-##Example
+###Example
 Generating your own ps64 revshell
 rs -t ps -i eth1 -p 80
 
 
-#Quick transfer to windows target (materials/makepwn.py)
+##Quick transfer to windows target (materials/makepwn.py)
 Python script to get your tun0 or eth0 ip, and then plug that into a ps1 script.
 Run a command on your windows target upon gaining access to trigger the ps1 script and download all your crucial files to C:\Windows\Temp
 
