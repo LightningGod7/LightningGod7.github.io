@@ -50,10 +50,11 @@ p.s. do remember to change the paths for files like 'breakout' if you do use my 
 ## Apache Web-server
 I have an apache server systemctl-enabled. The root directory is pointed to `/serve` on my kali and is hosted on port 8000. `/serve` contains a bunch of binaries, scripts I commonly transfer to my targets upon gaining access. E.g. linpeas, pspy64, powerup, powerview etc.
 ![apache ws](images/apache-index-listing.png)
+![apache /serve folder](images/apache-service.png)
 ## Code-server
 Code server is basically vs code running as a webserver. You can access this remotely, for example outside your vm on your actual host.
 I keep a code-server running for me to quickly debug or edit scripts without having to nano in on my already flooded terminal. 
-
+![code server](images/code-server.png)
 # Shortcut folders
 Do symbolic links on your vm to quickly access most used files. Some examples of what I do are as such
 
@@ -113,8 +114,9 @@ sudo ip route add 172.16.124.0/24 dev ligolo
 
 ## [Diodon](https://github.com/diodon-dev/diodon)
 Its a super helpful clipboard. Youre gonna want to have this in between copying and pasting hundreds of stuff during your exam. 
+![diodon](images/diodon.png)
 Personally, I binded the hot key to super(win key) + v to have it same as windows. 
-
+![diodon hotkey](images/diodon-hotkey.png)
 ## NetExec
 This is a kali swiss army knife on steroids. You can enumerate, exploit on this AIO tool. Also, in case you are worried, I have verified that this is not an auto-exploit tool and is allowed during the exam. I used this extensively during my own exam. All the commands are in my cheat sheet.
 ### Installation
