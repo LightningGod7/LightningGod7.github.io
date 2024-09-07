@@ -19,7 +19,7 @@ Feel free to explore the resources on this site:
 
 Here are the materials I've prepared for my OSCP Exam. Click the links to explore each section:
 
-- [My modus operandi](materials/modus-operandi.md)
+- [My modus operandi](modus-operandi.md)
 - [CheatSheet](cheat-sheets.md)
 - [Methodology](methodologies.md)
 - [Scripts](scripts.md)
