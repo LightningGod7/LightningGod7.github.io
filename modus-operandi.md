@@ -108,6 +108,7 @@ Fyi, this was most most ran command during my exam.
 
 ## Pre-requisites
 `pip install netifaces`
+
 Change CHEATSHEET_PATH variable to whereever you decided to put your cheatsheet at
 
 ## Usage
