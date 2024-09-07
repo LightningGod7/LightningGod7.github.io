@@ -49,7 +49,7 @@ p.s. do remember to change the paths for files like 'breakout' if you do use my 
 
 ## Apache Web-server
 I have an apache server systemctl-enabled. The root directory is pointed to `/serve` on my kali and is hosted on port 8000. `/serve` contains a bunch of binaries, scripts I commonly transfer to my targets upon gaining access. E.g. linpeas, pspy64, powerup, powerview etc.
-[apache ws](images/apache-index-listing.png)
+[apache ws](docs/assets/images/apache-index-listing.png)
 ## Code-server
 Code server is basically vs code running as a webserver. You can access this remotely, for example outside your vm on your actual host.
 I keep a code-server running for me to quickly debug or edit scripts without having to nano in on my already flooded terminal. 
