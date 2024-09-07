@@ -115,7 +115,9 @@ sudo ip route add 172.16.124.0/24 dev ligolo
 ## [Diodon](https://github.com/diodon-dev/diodon)
 Its a super helpful clipboard. Youre gonna want to have this in between copying and pasting hundreds of stuff during your exam. 
 ![diodon](images/diodon.png)
+
 Personally, I binded the hot key to super(win key) + v to have it same as windows. 
+
 ![diodon hotkey](images/diodon-hotkey.png)
 ## NetExec
 This is a kali swiss army knife on steroids. You can enumerate, exploit on this AIO tool. Also, in case you are worried, I have verified that this is not an auto-exploit tool and is allowed during the exam. I used this extensively during my own exam. All the commands are in my cheat sheet.
