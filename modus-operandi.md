@@ -5,7 +5,7 @@ The exam is a 24 hour long process and as humans, we are bound to get tired and 
 
 My MO involves techniques and habits to streamline all these processes. From my own experience in my exam, this saved me a ton of time and allowed me to utilize my brain juice on the more important things.
 
-# Aliases (materials/alias.txt)
+# [Aliases](materials/alias.txt)
 
 ```bash
 alias update='sudo -- sh -c "apt update && apt upgrade"'
@@ -45,7 +45,7 @@ Do symbolic links on your vm to quickly access most used files. Some examples of
 
 # Must have programs
 
-## Ligolo (https://github.com/nicocha30/ligolo-ng/)
+## [Ligolo](https://github.com/nicocha30/ligolo-ng/)
 Ligolo is a tool used for port-forwarding and tunneling. It is not taught in the PEN-200 material but it is way easier to use as compared to the tools they do teach you.
 You will find all the below commands in my cheat sheet. (except the installation)
 
@@ -92,7 +92,7 @@ sudo ip route add 172.16.124.0/24 dev ligolo
 .\agent.exe -connect 192.168.45.204:443 -ignore-cert
 ```
 
-## [Diodon] (https://github.com/diodon-dev/diodon)
+## [Diodon](https://github.com/diodon-dev/diodon)
 Its a super helpful clipboard. Youre gonna want to have this in between copying and pasting hundreds of stuff during your exam. 
 Personally, I binded the hot key to super(win key) + v to have it same as windows. 
 
@@ -101,7 +101,7 @@ This is a kali swiss army knife on steroids. You can enumerate, exploit on this 
 ### Installation
 `sudo apt install netexec`
 
-# [Handy Cheatsheet printer] (materials/ref)
+# [Handy Cheatsheet printer](materials/ref)
 Yes you can just cat and grep your cheatsheets but why not replace $LHOST dynamically while you're at it?
 Chmod this script as an executable and added it to PATH so that you can call it from anywhere.
 Fyi, this was most most ran command during my exam.
@@ -140,6 +140,6 @@ Generating your own ps64 revshell
 `rs -t ps -i eth1 -p 80`
 
 
-# [Quick transfer to windows target] (materials/makepwn.py)
+# [Quick transfer to windows target](materials/makepwn.py)
 Python script to get your tun0 or eth0 ip, and then plug that into a ps1 script.
 Run a command on your windows target upon gaining access to trigger the ps1 script and download all your crucial files to C:\Windows\Temp
